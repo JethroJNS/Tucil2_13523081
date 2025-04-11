@@ -39,7 +39,7 @@ public class ImageUtils {
         double[] mean = { sum[0] / N, sum[1] / N, sum[2] / N };
 
         // Perhitungan error berdasarkan metode yang dipilih
-        return switch (ImageCompressor.method) {
+        return switch (Main.method) {
             case 1 -> calculateVariance(img, x, y, width, height, mean);
             case 2 -> calculateMAD(img, x, y, width, height, mean);
             case 3 -> calculateMaxDiff(img, x, y, width, height);

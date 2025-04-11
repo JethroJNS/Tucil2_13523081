@@ -31,7 +31,7 @@ public class IOHandler {
                     System.out.println("File tidak bisa dibaca sebagai gambar. Silakan coba lagi.");
                     continue;
                 }
-                ImageCompressor.inputPath = path;
+                Main.inputPath = path;
                 return img;
             } catch (IOException e) {
                 System.out.println("Terjadi kesalahan saat membaca file: " + e.getMessage());
@@ -53,7 +53,7 @@ public class IOHandler {
             try {
                 int m = Integer.parseInt(scanner.nextLine());
                 if (m >= 1 && m <= 4) {
-                    ImageCompressor.method = m;
+                    Main.method = m;
                     break;
                 } else {
                     System.out.println("Input tidak valid. Masukkan angka antara 1 hingga 4.");
@@ -69,16 +69,16 @@ public class IOHandler {
             try {
                 double t = Double.parseDouble(scanner.nextLine());
 
-                boolean isValid = switch (ImageCompressor.method) {
+                boolean isValid = switch (Main.method) {
                     case 4 -> t >= 0.0 && t <= 8.0;
                     default -> t >= 0.0 && t <= 16256.25;
                 };
 
                 if (isValid) {
-                    ImageCompressor.threshold = t;
+                    Main.threshold = t;
                     break;
                 } else {
-                    System.out.println(ImageCompressor.method == 4
+                    System.out.println(Main.method == 4
                         ? "Threshold untuk Entropy harus antara 0.0 dan 8.0."
                         : "Threshold harus antara 0.0 dan 16256.25.");
                 }
@@ -94,7 +94,7 @@ public class IOHandler {
             try {
                 int size = Integer.parseInt(scanner.nextLine());
                 if (size >= 1 && size <= maxBlockSize) {
-                    ImageCompressor.minBlockSize = size;
+                    Main.minBlockSize = size;
                     break;
                 } else {
                     System.out.println("Ukuran blok harus antara 1 dan " + maxBlockSize + ".");
